@@ -38,13 +38,10 @@ function WeatherCtrl($scope, $routeParams, $location) {
 
 function WeatherCityCtrl($scope, $routeParams, $location, Weather) {
 	'use strict';
-	console.log("instantiated city");
-	console.log("city: " + $routeParams.city);
 	$scope.weather = Weather.city($routeParams.city);
 }
 
 function WeatherLatLngCtrl($scope, $routeParams, $location, Weather) {
 	'use strict';
-	console.log("lat: " + $routeParams.lat + " lng: " + $routeParams.lng);
 	$scope.weather = Weather.latLng($routeParams.lat, $routeParams.lng);
 }

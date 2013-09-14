@@ -4,7 +4,6 @@ angular.module('weatherService', []).
 			api: 'http://api.openweathermap.org/data/2.5/weather?callback=JSON_CALLBACK&',
 			
 			transform: function(weather) {
-				console.log("Transforming weather for: " + weather.data.name);
 				var result = angular.copy(weather.data);
 
 				// Convert Kelvin to Fahrenheit.
@@ -17,13 +16,11 @@ angular.module('weatherService', []).
 			},
 			
 			city: function(city) {
-				console.log("city service:" + city);
 				return $http({method: 'JSONP', url: this.api + 'q=' + city}).
 					then(this.transform);
 			},
 			
 			latLng: function(lat, lng) {
-				console.log("service.lat: " + lat + ", service.lng: " + lng);
 				return $http({method: 'JSONP', url: this.api + 'lat=' + lat + '&lon=' + lng}).
 					then(this.transform);
 			}
