@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en" >
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="True">
+  <meta name="MobileOptimized" content="320">
+
+  <meta name="viewport"
+    content="width=device-width, initial-scale=1, maximum-scale=1">
+
+  <title>WeatherProof</title>
+
+  <!-- Explicity define where icons exist on the server. -->
+  <link rel="apple-touch-icon-precomposed" href="ios.png">
+  <link rel="shortcut icon" href="favicon.ico">
+
+  <!-- Import stylesheets. -->
+  <link rel="stylesheet" href="vendor/pure-min.css">
+  <link rel="stylesheet" href="styles/theme.css">
+</head>
+<body ng-app="weather">
+  <div class="background"><img src="images/background.jpg"></div>
+
+  <h1>Weather<span class="proof">prooF</span></h1>
+
+  <form class="pure-form" ng-controller="WeatherCtrl" ng-submit="showWeather()">
+    <img class="detect" src="images/geolocation.png" ng-click="detect()">
+    <input type="text" class="pure-input-rounded" ng-model="city" ng-click="changeWeather()" placeholder="{{placeholder}}">
+  </form>
+
+  <div class="weather"></div>
+
+  <div ng-view></div>
+
+  <script id="weather.html" type="text/ng-template">
+    <h4 class="forecast">
+      {{weather.weather[0].description}}
+    </h4>
+    <hr>
+    <div class="region">
+      <table class="pure-table pure-table-horizontal">
+        <tbody>
+            <tr>
+              <td>Temp</td>
+              <td>{{weather.main.temp}} F</td>
+            </tr>
+            <tr>
+              <td>Pressure</td>
+              <td>{{weather.main.pressure}} MB</td>
+            </tr>
+            <tr>
+              <td>Humidity</td>
+              <td>{{weather.main.humidity}} %</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+    <div class="wind region">
+      <table class="pure-table pure-table-horizontal">
+        <tbody>
+            <tr>
+              <td>Wind Speed</td>
+              <td>{{weather.wind.speed}} MPH</td>
+            </tr>
+            <tr>
+              <td>Wind Deg</td>
+              <td>{{weather.wind.deg}} &deg;</td>
+            </tr>
+        </tbody>
+      </table>
+    </div>
+  </script>
+
+  <footer>
+    Powered by: <a href="http://openweathermap.org/">OpenWeatherMap</a>
+  </footer>
+
+  <!-- Vendor libraries. -->
+  <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+
+  <!-- Application. -->
+  <script src="source/controllers.js"></script>
+  <script src="source/services.js"></script>
+  <script src="source/app.js"></script>
+
+</body>
+</html>
