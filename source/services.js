@@ -1,5 +1,5 @@
 angular.module('weatherService', []).
-	factory('Weather', function($http) {
+	factory('Weather', ['$http', function($http) {
 		return {
 			api: 'http://api.openweathermap.org/data/2.5/weather?callback=JSON_CALLBACK&',
 			
@@ -25,4 +25,4 @@ angular.module('weatherService', []).
 					then(this.transform);
 			}
 		};
-	});
+	}]);

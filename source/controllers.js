@@ -1,5 +1,6 @@
 
-function WeatherCtrl($scope, $routeParams, $location) {
+angular.module('weather').
+controller('WeatherCtrl', ['$scope', '$routeParams', '$location', function ($scope, $routeParams, $location) {
 	'use strict';
 	
 	$scope.tryGeolocation = true;
@@ -34,14 +35,14 @@ function WeatherCtrl($scope, $routeParams, $location) {
 			);
 		}
 	};
-}
+}]).
 
-function WeatherCityCtrl($scope, $routeParams, $location, Weather) {
+controller('WeatherCityCtrl', ['$scope', '$routeParams', 'Weather', function ($scope, $routeParams, Weather) {
 	'use strict';
 	$scope.weather = Weather.city($routeParams.city);
-}
+}]).
 
-function WeatherLatLngCtrl($scope, $routeParams, $location, Weather) {
+controller('WeatherLatLngCtrl', ['$scope', '$routeParams', 'Weather', function ($scope, $routeParams, Weather) {
 	'use strict';
 	$scope.weather = Weather.latLng($routeParams.lat, $routeParams.lng);
-}
+}]);
